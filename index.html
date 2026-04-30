@@ -22,7 +22,6 @@
   --accent: #00e5b0;
   --accent-2: #00c49a;
   --accent-soft: rgba(0,229,176,0.10);
-  --accent-glow: rgba(0,229,176,0.20);
   --warn: #f59e0b;
   --warn-soft: rgba(245,158,11,0.08);
   --info: #60a5fa;
@@ -35,414 +34,171 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 60px; }
-
 body {
   font-family: 'Vazirmatn', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.85;
-  min-height: 100vh;
-  padding: 0 0 100px;
+  background: var(--bg); color: var(--text);
+  line-height: 1.85; min-height: 100vh; padding: 0 0 100px;
   background-image:
     radial-gradient(ellipse 80% 40% at 50% -10%, rgba(0,229,176,0.08), transparent),
-    radial-gradient(ellipse 40% 40% at 90% 50%, rgba(96,165,250,0.04), transparent),
-    radial-gradient(ellipse 50% 30% at 10% 80%, rgba(0,229,176,0.03), transparent);
+    radial-gradient(ellipse 40% 40% at 90% 50%, rgba(96,165,250,0.04), transparent);
 }
 
-/* ─── PROGRESS BAR ─── */
-.progress-rail {
-  position: fixed; top: 0; left: 0; right: 0;
-  height: 3px; background: var(--surface); z-index: 200;
-}
-.progress-fill {
-  height: 100%; width: 0%;
-  background: linear-gradient(90deg, var(--accent-2), var(--accent), #7fffd4);
-  transition: width 0.6s cubic-bezier(.4,0,.2,1);
-  box-shadow: 0 0 16px rgba(0,229,176,0.5);
-}
+/* ── PROGRESS ── */
+.progress-rail { position:fixed; top:0; left:0; right:0; height:3px; background:var(--surface); z-index:200; }
+.progress-fill { height:100%; width:0%; background:linear-gradient(90deg,var(--accent-2),var(--accent),#7fffd4); transition:width .6s cubic-bezier(.4,0,.2,1); box-shadow:0 0 16px rgba(0,229,176,.5); }
 
-/* ─── TOP NAV ─── */
-.topbar {
-  position: fixed; top: 3px; left: 0; right: 0;
-  background: rgba(8,13,26,0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
-  padding: 10px 16px;
-  z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.topbar-brand { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.3px; }
-.topbar-brand span { color: var(--text-2); font-weight: 400; }
-.topbar-steps { font-size: 12px; color: var(--text-3); }
-.topbar-steps strong { color: var(--accent); font-weight: 600; }
+/* ── TOPBAR ── */
+.topbar { position:fixed; top:3px; left:0; right:0; background:rgba(8,13,26,.88); backdrop-filter:blur(16px); border-bottom:1px solid var(--line); padding:10px 16px; z-index:100; display:flex; align-items:center; justify-content:space-between; }
+.topbar-brand { font-size:13px; font-weight:700; color:var(--accent); }
+.topbar-brand span { color:var(--text-2); font-weight:400; }
+.topbar-steps { font-size:12px; color:var(--text-3); }
+.topbar-steps strong { color:var(--accent); font-weight:600; }
 
-/* ─── WRAP ─── */
-.wrap { max-width: 660px; margin: 0 auto; padding: 72px 14px 20px; }
+.wrap { max-width:660px; margin:0 auto; padding:72px 14px 20px; }
 
-/* ─── HEADER ─── */
-header {
-  text-align: center;
-  padding: 28px 8px 32px;
-}
-.badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 14px;
-  background: var(--accent-soft); color: var(--accent);
-  border: 1px solid rgba(0,229,176,0.22);
-  border-radius: 100px; font-size: 11.5px; font-weight: 600;
-  margin-bottom: 18px; letter-spacing: 0.5px;
-}
-h1 {
-  font-size: clamp(24px, 6vw, 34px);
-  font-weight: 800; line-height: 1.35; margin-bottom: 10px;
-  background: linear-gradient(135deg, #fff 20%, #9ab4dc 80%);
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.lead {
-  color: var(--text-2); font-size: 14px;
-  max-width: 460px; margin: 0 auto 20px;
-}
-.arch-box {
-  display: inline-block;
-  background: var(--code-bg);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 14px 20px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px; color: var(--text-2);
-  text-align: right; direction: rtl;
-  margin-bottom: 8px; line-height: 2;
-}
-.arch-box .hl { color: var(--accent); }
-.arch-box .dim { color: var(--text-3); font-size: 11px; }
+/* ── HEADER ── */
+header { text-align:center; padding:24px 8px 28px; }
+.badge { display:inline-flex; align-items:center; gap:6px; padding:5px 14px; background:var(--accent-soft); color:var(--accent); border:1px solid rgba(0,229,176,.22); border-radius:100px; font-size:11.5px; font-weight:600; margin-bottom:16px; }
+h1 { font-size:clamp(22px,6vw,32px); font-weight:800; line-height:1.35; margin-bottom:10px; background:linear-gradient(135deg,#fff 20%,#9ab4dc 80%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.lead { color:var(--text-2); font-size:13.5px; max-width:460px; margin:0 auto 18px; }
+.arch-box { display:inline-block; background:var(--code-bg); border:1px solid var(--line); border-radius:var(--radius); padding:12px 18px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-2); text-align:right; direction:rtl; margin-bottom:8px; line-height:2; }
+.arch-box .hl { color:var(--accent); }
+.arch-box .dim { color:var(--text-3); font-size:11px; }
 
-/* ─── CARDS ─── */
-.card {
+/* ── MODE SWITCH ── */
+.mode-switch {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 20px 16px;
-  margin-bottom: 14px;
-  transition: border-color 0.4s, box-shadow 0.4s;
-  position: relative;
-  overflow: hidden;
+  margin-bottom: 20px;
 }
-.card::before {
-  content: '';
-  position: absolute; top: 0; right: 0;
-  width: 3px; height: 100%;
-  background: var(--line);
-  transition: background 0.4s;
+.mode-switch h3 { font-size:15px; font-weight:700; margin-bottom:6px; }
+.mode-switch p { font-size:13px; color:var(--text-2); margin-bottom:14px; }
+.mode-btns { display:flex; gap:10px; flex-wrap:wrap; }
+.mode-btn {
+  flex:1; min-width:200px;
+  padding:14px 16px;
+  border-radius:10px;
+  border:2px solid var(--line-2);
+  background:var(--surface-2);
+  color:var(--text);
+  cursor:pointer;
+  font-family:'Vazirmatn',sans-serif;
+  font-size:14px; font-weight:700;
+  transition:all .25s;
+  text-align:center;
 }
-.card.done::before { background: var(--accent); }
-.card.done {
-  border-color: rgba(0,229,176,0.25);
-  box-shadow: 0 0 30px rgba(0,229,176,0.06);
-}
-.card.done .card-num {
-  background: var(--accent); color: var(--bg);
-  border-color: var(--accent);
-  box-shadow: 0 0 16px rgba(0,229,176,0.4);
-}
-.card.done .card-num::before { content: '✓'; font-size: 14px; }
-.card.done .card-num span { display: none; }
+.mode-btn:hover { border-color:var(--accent); background:var(--accent-soft); color:var(--accent); }
+.mode-btn.active { border-color:var(--accent); background:var(--accent-soft); color:var(--accent); box-shadow:0 0 20px rgba(0,229,176,.15); }
+.mode-btn .mode-icon { display:block; font-size:24px; margin-bottom:6px; }
+.mode-btn .mode-sub { display:block; font-size:11px; font-weight:400; color:var(--text-3); margin-top:4px; }
+.mode-btn.active .mode-sub { color:var(--accent-2); }
 
-.card-head {
-  display: flex; align-items: center;
-  gap: 12px; margin-bottom: 12px;
-}
-.card-num {
-  width: 34px; height: 34px;
-  border-radius: 10px;
-  background: var(--surface-2);
-  border: 1px solid var(--line-2);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 14px;
-  flex-shrink: 0;
-  font-family: 'JetBrains Mono', monospace;
-  transition: all 0.3s;
-  color: var(--accent);
-}
-.card-title { font-size: 16px; font-weight: 700; flex: 1; }
-.card-subtitle {
-  font-size: 12px; color: var(--text-3); font-weight: 400;
-  display: block; margin-top: 1px;
-}
-.card-desc { color: var(--text-2); font-size: 13.5px; margin-bottom: 14px; }
+/* ── CARDS ── */
+.card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:20px 16px; margin-bottom:14px; transition:border-color .4s,box-shadow .4s; position:relative; overflow:hidden; }
+.card::before { content:''; position:absolute; top:0; right:0; width:3px; height:100%; background:var(--line); transition:background .4s; }
+.card.done::before { background:var(--accent); }
+.card.done { border-color:rgba(0,229,176,.25); box-shadow:0 0 28px rgba(0,229,176,.06); }
+.card.done .card-num { background:var(--accent); color:var(--bg); border-color:var(--accent); box-shadow:0 0 14px rgba(0,229,176,.4); }
+.card.done .card-num::before { content:'✓'; font-size:14px; }
+.card.done .card-num span { display:none; }
+.card-head { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.card-num { width:34px; height:34px; border-radius:10px; background:var(--surface-2); border:1px solid var(--line-2); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0; font-family:'JetBrains Mono',monospace; transition:all .3s; color:var(--accent); }
+.card-title { font-size:16px; font-weight:700; flex:1; }
+.card-subtitle { font-size:12px; color:var(--text-3); font-weight:400; display:block; margin-top:1px; }
+.card-desc { color:var(--text-2); font-size:13.5px; margin-bottom:14px; }
 
-/* ─── FIELDS ─── */
-.field { margin-bottom: 12px; }
-.field label {
-  display: block; font-size: 12px; color: var(--text-2);
-  margin-bottom: 5px; font-weight: 600; letter-spacing: 0.2px;
-}
-.field input, .field select {
-  width: 100%;
-  background: var(--code-bg);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 11px 13px;
-  color: var(--text);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  direction: ltr; text-align: left;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.field input:focus, .field select:focus {
-  outline: none; border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0,229,176,0.1);
-}
-.field input::placeholder { color: var(--text-3); font-size: 12px; }
-.field .hint {
-  font-size: 12px; color: var(--text-3);
-  margin-top: 5px; line-height: 1.6;
-}
+/* ── FIELDS ── */
+.field { margin-bottom:12px; }
+.field label { display:block; font-size:12px; color:var(--text-2); margin-bottom:5px; font-weight:600; }
+.field input { width:100%; background:var(--code-bg); border:1px solid var(--line); border-radius:var(--radius-sm); padding:11px 13px; color:var(--text); font-family:'JetBrains Mono',monospace; font-size:13px; direction:ltr; text-align:left; transition:border-color .2s,box-shadow .2s; }
+.field input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(0,229,176,.1); }
+.field input::placeholder { color:var(--text-3); font-size:12px; }
+.field .hint { font-size:12px; color:var(--text-3); margin-top:5px; line-height:1.6; }
 
-/* ─── CODE OUTPUT ─── */
-.out {
-  background: var(--code-bg);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 12px 14px;
-  margin: 10px 0;
-  direction: ltr;
-}
-.out-label {
-  direction: rtl;
-  font-size: 11.5px; color: var(--text-3);
-  margin-bottom: 8px; font-weight: 600;
-  display: flex; align-items: center; gap: 6px;
-}
-.out-label::before {
-  content: '▸';
-  color: var(--accent); font-size: 10px;
-}
-.out code {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12.5px;
-  color: #7dd3fc;
-  word-break: break-all;
-  white-space: pre-wrap;
-  line-height: 1.75;
-  padding-bottom: 10px;
-  max-height: 300px;
-  overflow-y: auto;
-}
-.out code::-webkit-scrollbar { width: 5px; }
-.out code::-webkit-scrollbar-track { background: transparent; }
-.out code::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 3px; }
+/* ── CODE OUTPUT ── */
+.out { background:var(--code-bg); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:10px 0; direction:ltr; }
+.out-label { direction:rtl; font-size:11.5px; color:var(--text-3); margin-bottom:8px; font-weight:600; display:flex; align-items:center; gap:6px; }
+.out-label::before { content:'▸'; color:var(--accent); font-size:10px; }
+.out code { display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#7dd3fc; word-break:break-all; white-space:pre-wrap; line-height:1.75; padding-bottom:10px; max-height:300px; overflow-y:auto; }
+.out code::-webkit-scrollbar { width:5px; }
+.out code::-webkit-scrollbar-thumb { background:var(--line-2); border-radius:3px; }
 
-/* ─── BUTTONS ─── */
-.copy-btn {
-  width: 100%;
-  background: var(--surface-2);
-  border: 1px solid var(--line-2);
-  color: var(--text-2);
-  padding: 10px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-family: 'Vazirmatn', sans-serif;
-  font-size: 13px; font-weight: 600;
-  transition: all 0.2s;
-  margin-top: 4px;
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-}
-.copy-btn:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-.copy-btn.copied { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+/* ── BUTTONS ── */
+.copy-btn { width:100%; background:var(--surface-2); border:1px solid var(--line-2); color:var(--text-2); padding:10px; border-radius:var(--radius-sm); cursor:pointer; font-family:'Vazirmatn',sans-serif; font-size:13px; font-weight:600; transition:all .2s; margin-top:4px; display:flex; align-items:center; justify-content:center; gap:6px; }
+.copy-btn:hover,.copy-btn.copied { background:var(--accent); color:var(--bg); border-color:var(--accent); }
+.action-btn { display:flex; align-items:center; justify-content:center; gap:8px; background:var(--accent); color:var(--bg); padding:12px 16px; border-radius:10px; text-decoration:none; font-weight:700; font-size:14px; margin:10px 0 4px; transition:transform .2s,box-shadow .2s; border:none; width:100%; cursor:pointer; font-family:'Vazirmatn',sans-serif; }
+.action-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,229,176,.3); }
+.action-btn.secondary { background:var(--surface-2); color:var(--text); border:1px solid var(--line-2); box-shadow:none; }
+.action-btn.secondary:hover { background:var(--surface-3); box-shadow:none; }
+.action-btn .icon { font-size:16px; }
+.done-btn { width:100%; margin-top:16px; padding:11px; background:transparent; border:1px dashed var(--line-2); color:var(--text-3); border-radius:10px; cursor:pointer; font-family:'Vazirmatn',sans-serif; font-size:13px; font-weight:600; transition:all .2s; }
+.done-btn:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-soft); }
+.card.done .done-btn { border-style:solid; border-color:rgba(0,229,176,.3); color:var(--accent); background:var(--accent-soft); }
 
-.action-btn {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  background: var(--accent); color: var(--bg);
-  padding: 12px 16px; border-radius: 10px;
-  text-decoration: none; font-weight: 700; font-size: 14px;
-  margin: 10px 0 4px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  border: none; width: 100%;
-  cursor: pointer;
-  font-family: 'Vazirmatn', sans-serif;
-  letter-spacing: 0.2px;
-}
-.action-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,229,176,0.3);
-}
-.action-btn.secondary {
-  background: var(--surface-2); color: var(--text);
-  border: 1px solid var(--line-2);
-  box-shadow: none;
-}
-.action-btn.secondary:hover { background: var(--surface-3); box-shadow: none; }
-.action-btn .icon { font-size: 16px; }
+/* ── NOTES ── */
+.note { background:var(--warn-soft); border-right:3px solid var(--warn); padding:11px 13px; border-radius:var(--radius-sm); font-size:13px; color:var(--text-2); margin:10px 0; line-height:1.8; }
+.note.info { background:var(--info-soft); border-right-color:var(--info); }
+.note.danger { background:var(--danger-soft); border-right-color:var(--danger); }
+.note.success { background:var(--accent-soft); border-right-color:var(--accent); }
+.note strong { color:var(--text); }
+.note code { font-family:'JetBrains Mono',monospace; color:var(--accent); background:var(--code-bg); padding:1px 6px; border-radius:4px; font-size:11.5px; }
 
-.done-btn {
-  width: 100%; margin-top: 16px;
-  padding: 11px;
-  background: transparent;
-  border: 1px dashed var(--line-2);
-  color: var(--text-3);
-  border-radius: 10px;
-  cursor: pointer;
-  font-family: 'Vazirmatn', sans-serif;
-  font-size: 13px; font-weight: 600;
-  transition: all 0.2s;
-}
-.done-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
-.card.done .done-btn {
-  border-style: solid; border-color: rgba(0,229,176,0.3);
-  color: var(--accent); background: var(--accent-soft);
-}
+/* ── MISC ── */
+.lock-msg { text-align:center; color:var(--text-3); font-size:13px; padding:20px 10px; background:var(--code-bg); border-radius:var(--radius-sm); border:1px dashed var(--line); }
+.lock-msg::before { content:'🔒  '; }
+.step-info { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius-sm); padding:12px 14px; margin:10px 0; font-size:13px; color:var(--text-2); line-height:1.8; }
+.step-info strong { color:var(--accent); }
+.step-info code { font-family:'JetBrains Mono',monospace; color:var(--accent); background:var(--code-bg); padding:1px 6px; border-radius:4px; font-size:11.5px; }
+.section-label { font-size:11px; color:var(--text-3); font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+.divider { height:1px; background:var(--line); margin:14px 0; border:none; }
+.qa-list { margin:10px 0; }
+.qa-item { display:flex; gap:10px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--line); font-size:13px; }
+.qa-item:last-child { border-bottom:none; }
+.qa-q { color:var(--text-3); flex-shrink:0; min-width:170px; font-size:12.5px; }
+.qa-a { font-family:'JetBrains Mono',monospace; color:var(--accent); font-size:12.5px; font-weight:600; }
+.qa-note { color:var(--text-2); font-size:11.5px; margin-top:2px; }
+.qa-a.warn { color:var(--warn); }
+.status-row { display:flex; gap:8px; flex-wrap:wrap; margin:10px 0; }
+.status-badge { display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:6px; font-size:12px; font-weight:600; }
+.status-badge.ok { background:var(--accent-soft); color:var(--accent); border:1px solid rgba(0,229,176,.2); }
+.status-badge.warn { background:var(--warn-soft); color:var(--warn); border:1px solid rgba(245,158,11,.2); }
+.status-badge.no { background:var(--danger-soft); color:var(--danger); border:1px solid rgba(248,113,113,.2); }
+.float-progress { position:fixed; bottom:18px; left:50%; transform:translateX(-50%); background:rgba(9,13,24,.92); backdrop-filter:blur(12px); border:1px solid var(--line-2); border-radius:100px; padding:8px 18px; font-size:12.5px; color:var(--text-2); z-index:150; box-shadow:0 8px 32px rgba(0,0,0,.5); white-space:nowrap; }
+.float-progress strong { color:var(--accent); font-weight:700; }
+.finale { text-align:center; padding:32px 20px; background:linear-gradient(135deg,rgba(0,229,176,.08),rgba(96,165,250,.05)); border:1px solid rgba(0,229,176,.3); border-radius:var(--radius); margin-top:20px; opacity:.4; pointer-events:none; transition:opacity .5s; }
+.finale.unlocked { opacity:1; pointer-events:auto; }
+.finale-emoji { font-size:40px; margin-bottom:10px; display:block; }
+.finale h2 { font-size:22px; color:var(--accent); margin-bottom:8px; font-weight:800; }
+.finale p { color:var(--text-2); font-size:13.5px; max-width:400px; margin:0 auto; }
 
-/* ─── NOTES ─── */
-.note {
-  background: var(--warn-soft);
-  border-right: 3px solid var(--warn);
-  padding: 11px 13px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  color: var(--text-2);
-  margin: 10px 0;
-  line-height: 1.8;
-}
-.note.info {
-  background: var(--info-soft);
-  border-right-color: var(--info);
-}
-.note.danger {
-  background: var(--danger-soft);
-  border-right-color: var(--danger);
-}
-.note.success {
-  background: var(--accent-soft);
-  border-right-color: var(--accent);
-}
-.note strong { color: var(--text); }
-.note code {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--accent); background: var(--code-bg);
-  padding: 1px 6px; border-radius: 4px; font-size: 11.5px;
-}
-
-/* ─── LOCK ─── */
-.lock-msg {
-  text-align: center; color: var(--text-3);
-  font-size: 13px; padding: 20px 10px;
-  background: var(--code-bg); border-radius: var(--radius-sm);
-  border: 1px dashed var(--line);
-}
-.lock-msg::before { content: '🔒  '; }
-
-/* ─── STEP INFO ─── */
-.step-info {
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  margin: 10px 0;
-  font-size: 13px;
-  color: var(--text-2);
-  line-height: 1.8;
-}
-.step-info strong { color: var(--accent); }
-.step-info code {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--accent); background: var(--code-bg);
-  padding: 1px 6px; border-radius: 4px; font-size: 11.5px;
-}
-
-/* ─── ANSWER ROW ─── */
-.answer-row {
-  display: flex; gap: 8px; flex-wrap: wrap;
-  margin: 10px 0;
-}
-.answer-item {
-  background: var(--code-bg);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 8px 12px;
-  flex: 1; min-width: 140px;
-}
-.answer-item .q { font-size: 11px; color: var(--text-3); margin-bottom: 4px; }
-.answer-item .a {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px; color: var(--accent); font-weight: 600;
-}
-.answer-item .a.warn { color: var(--warn); }
-
-/* ─── FLOAT PROGRESS ─── */
-.float-progress {
-  position: fixed; bottom: 18px; left: 50%;
-  transform: translateX(-50%);
-  background: rgba(9,13,24,0.92);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--line-2);
-  border-radius: 100px;
-  padding: 8px 18px;
-  font-size: 12.5px; color: var(--text-2);
-  z-index: 150;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-  white-space: nowrap;
-}
-.float-progress strong { color: var(--accent); font-weight: 700; }
-
-/* ─── FINALE ─── */
-.finale {
-  text-align: center;
-  padding: 32px 20px;
-  background: linear-gradient(135deg, rgba(0,229,176,0.08), rgba(96,165,250,0.05));
-  border: 1px solid rgba(0,229,176,0.3);
+/* ── EXISTING PANEL INFO BOX ── */
+.panel-info-box {
+  background: linear-gradient(135deg, rgba(96,165,250,0.08), rgba(0,229,176,0.05));
+  border: 1px solid rgba(96,165,250,0.25);
   border-radius: var(--radius);
-  margin-top: 20px;
-  opacity: 0.4; pointer-events: none;
-  transition: opacity 0.5s;
+  padding: 16px;
+  margin: 12px 0;
 }
-.finale.unlocked { opacity: 1; pointer-events: auto; }
-.finale-emoji { font-size: 40px; margin-bottom: 10px; display: block; }
-.finale h2 { font-size: 22px; color: var(--accent); margin-bottom: 8px; font-weight: 800; }
-.finale p { color: var(--text-2); font-size: 13.5px; max-width: 400px; margin: 0 auto; }
+.panel-info-box h4 { font-size:13px; color:var(--info); font-weight:700; margin-bottom:8px; }
+.panel-field-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+.panel-field-item { flex:1; min-width:120px; background:var(--code-bg); border:1px solid var(--line); border-radius:var(--radius-sm); padding:8px 10px; }
+.panel-field-item .pf-label { font-size:10.5px; color:var(--text-3); margin-bottom:3px; font-weight:600; letter-spacing:.5px; }
+.panel-field-item .pf-val { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent); font-weight:600; word-break:break-all; }
 
-/* ─── DIVIDER ─── */
-.divider {
-  height: 1px; background: var(--line);
-  margin: 14px 0; border: none;
-}
+/* ── HOW TO GET VALUES GUIDE ── */
+.get-values-guide { margin:12px 0; }
+.gv-step { display:flex; gap:10px; padding:8px 0; border-bottom:1px solid var(--line); align-items:flex-start; }
+.gv-step:last-child { border-bottom:none; }
+.gv-num { width:22px; height:22px; border-radius:50%; background:var(--accent-soft); color:var(--accent); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+.gv-text { font-size:13px; color:var(--text-2); line-height:1.7; }
+.gv-text code { font-family:'JetBrains Mono',monospace; color:var(--accent); background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:11.5px; }
+.gv-text strong { color:var(--text); }
 
-/* ─── SECTION LABEL ─── */
-.section-label {
-  font-size: 11px; color: var(--text-3);
-  font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; margin-bottom: 8px;
-}
-
-/* ─── QA LIST ─── */
-.qa-list { margin: 10px 0; }
-.qa-item {
-  display: flex; gap: 10px; align-items: flex-start;
-  padding: 9px 0; border-bottom: 1px solid var(--line);
-  font-size: 13px;
-}
-.qa-item:last-child { border-bottom: none; }
-.qa-q { color: var(--text-3); flex-shrink: 0; min-width: 180px; }
-.qa-a { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 12.5px; font-weight: 600; }
-.qa-note { color: var(--text-2); font-size: 11.5px; margin-top: 2px; }
-
-/* ─── STATUS BADGE ─── */
-.status-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
-.status-badge {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 5px 10px; border-radius: 6px;
-  font-size: 12px; font-weight: 600;
-}
-.status-badge.ok { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(0,229,176,0.2); }
-.status-badge.warn { background: var(--warn-soft); color: var(--warn); border: 1px solid rgba(245,158,11,0.2); }
-.status-badge.no { background: var(--danger-soft); color: var(--danger); border: 1px solid rgba(248,113,113,0.2); }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 480px) {
-  .qa-q { min-width: 140px; font-size: 12px; }
-  .answer-row { gap: 6px; }
-  .answer-item { min-width: 120px; }
+@media (max-width:480px) {
+  .mode-btn { min-width:140px; }
+  .qa-q { min-width:130px; }
 }
 </style>
 </head>
@@ -452,7 +208,7 @@ h1 {
 
 <div class="topbar">
   <div class="topbar-brand">Netlify Relay <span>— Kian Irani</span></div>
-  <div class="topbar-steps">مرحله <strong id="progressText">۰</strong> از <strong>۸</strong></div>
+  <div class="topbar-steps">مرحله <strong id="progressText">۰</strong> از <strong id="totalText">۸</strong></div>
 </div>
 
 <div class="wrap">
@@ -461,360 +217,406 @@ h1 {
 <header>
   <div class="badge">⚡ راهنمای گام به گام — بدون دانش فنی</div>
   <h1>رله اینترنت آزاد<br>با Netlify CDN</h1>
-  <p class="lead">VPS داری؟ با این راهنما از صفر تا اتصال کامل، فقط کپی‌پیست می‌کنی — هیچ چیز دیگه‌ای لازم نیست.</p>
-
+  <p class="lead">ترافیک از CDN جهانی Netlify رد می‌شه — ISP فقط یه سایت عادی می‌بینه، نه VPN.</p>
   <div class="arch-box">
     <span class="dim">📱 گوشی ایران</span><br>
-    <span class="dim">↓ &nbsp;</span><span class="hl">VLESS+XHTTP over TLS</span><br>
-    <span class="dim">↓ &nbsp;</span><span class="hl">Netlify CDN</span> <span class="dim">(مثل یه سایت عادی)</span><br>
-    <span class="dim">↓ &nbsp;</span><span class="hl">VPS هلند/آلمان</span><br>
-    <span class="dim">↓ &nbsp;</span><span class="hl">🌍 اینترنت آزاد</span>
-  </div>
-
-  <div class="note info" style="text-align:right; margin-top:12px;">
-    <strong>چرا Netlify؟</strong> ترافیک از طریق CDN جهانی Netlify رد می‌شه. ISP فقط اتصال به یه سایت معمولی می‌بینه — نه VPN، نه پروکسی.
+    <span class="dim">↓ </span><span class="hl">VLESS+XHTTP over TLS</span><br>
+    <span class="dim">↓ </span><span class="hl">Netlify CDN</span> <span class="dim">(مثل یه سایت عادی)</span><br>
+    <span class="dim">↓ </span><span class="hl">VPS شما (3x-ui + Xray)</span><br>
+    <span class="dim">↓ </span><span class="hl">🌍 اینترنت آزاد</span>
   </div>
 </header>
 
-<!-- ═══ STEP 0: VPS INFO ═══ -->
-<div class="card" data-step="0">
+<!-- ═══ MODE SWITCH ═══ -->
+<div class="mode-switch" id="modeSwitcher">
+  <h3>📋 وضعیت فعلی سرورت چیه؟</h3>
+  <p>یکی رو انتخاب کن — مراحل بر اساس وضعیتت تنظیم می‌شن.</p>
+  <div class="mode-btns">
+    <button class="mode-btn active" id="btn-fresh" onclick="setMode('fresh')">
+      <span class="mode-icon">🆕</span>
+      VPS خام دارم
+      <span class="mode-sub">سرور تازه خریدم — هیچی نصب نیست</span>
+    </button>
+    <button class="mode-btn" id="btn-existing" onclick="setMode('existing')">
+      <span class="mode-icon">⚙️</span>
+      پنل 3x-ui دارم
+      <span class="mode-sub">قبلاً 3x-ui نصب کردم و کانفیگ دارم</span>
+    </button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!--        حالت ۱: VPS خام (مراحل ۰ تا ۷)        -->
+<!-- ════════════════════════════════════════════ -->
+<div id="mode-fresh">
+
+<!-- STEP 0 -->
+<div class="card" data-step="0" data-mode="fresh">
   <div class="card-head">
     <div class="card-num"><span>۰</span></div>
-    <div class="card-title">
-      مشخصات VPS تو
-      <span class="card-subtitle">این اطلاعات از فروشنده VPS داده شده</span>
-    </div>
+    <div class="card-title">مشخصات VPS <span class="card-subtitle">IP و پورت SSH از فروشنده VPS</span></div>
   </div>
-  <p class="card-desc">IP و پورت SSH سرورت رو وارد کن — بقیه مراحل خودکار تنظیم می‌شن.</p>
-
+  <p class="card-desc">IP سرورت رو وارد کن — بقیه مراحل خودکار تنظیم می‌شن.</p>
   <div class="field">
     <label>📡 آدرس IP سرور</label>
     <input type="text" id="i-ip" placeholder="مثلاً: 92.119.56.9" oninput="rebuild()" />
-    <div class="hint">آدرس IPv4 که فروشنده VPS بهت داده — معمولاً یه عدد ۴ قسمتی مثل ۱۲.۳۴.۵۶.۷۸</div>
+    <div class="hint">آدرس IPv4 از فروشنده VPS — مثل ۱۲.۳۴.۵۶.۷۸</div>
   </div>
-
   <div class="field">
     <label>🔌 پورت SSH</label>
     <input type="text" id="i-sshport" placeholder="22" value="22" oninput="rebuild()" />
-    <div class="hint">بیشتر سرورها پورت ۲۲ دارن — اگه فروشنده عدد دیگه‌ای داده همون رو بزن.</div>
+    <div class="hint">معمولاً ۲۲ — اگه فروشنده عدد دیگه‌ای داده همون رو بزن.</div>
   </div>
-
-  <button class="done-btn" onclick="markDone(0)">✓ وارد کردم، بریم مرحله بعد</button>
+  <button class="done-btn" onclick="markDone(0,'fresh')">✓ وارد کردم</button>
 </div>
 
-<!-- ═══ STEP 1: TERMIUS ═══ -->
-<div class="card" data-step="1">
+<!-- STEP 1 -->
+<div class="card" data-step="1" data-mode="fresh">
   <div class="card-head">
     <div class="card-num"><span>۱</span></div>
-    <div class="card-title">
-      اتصال به سرور با Termius
-      <span class="card-subtitle">اپ SSH رایگان برای موبایل</span>
-    </div>
+    <div class="card-title">اتصال با Termius <span class="card-subtitle">اپ SSH رایگان برای موبایل</span></div>
   </div>
-  <p class="card-desc">Termius یه اپ رایگانه که بهت اجازه می‌ده از طریق موبایل دستور روی سرور اجرا کنی.</p>
-
-  <a class="action-btn" href="https://play.google.com/store/apps/details?id=com.server.auditor.ssh.client" target="_blank">
-    <span class="icon">📲</span> دانلود Termius از Play Store
-  </a>
-
+  <a class="action-btn" href="https://play.google.com/store/apps/details?id=com.server.auditor.ssh.client" target="_blank"><span class="icon">📲</span> دانلود Termius از Play Store</a>
   <div class="step-info">
-    <strong>راهنمای اتصال (قدم به قدم):</strong><br>
-    ۱. Termius رو باز کن<br>
-    ۲. روی دکمه <strong>+</strong> (گوشه پایین راست) بزن<br>
-    ۳. <strong>New Host</strong> رو انتخاب کن<br>
-    ۴. در فیلد <strong>Hostname</strong>: IP سرورت رو بنویس<br>
-    ۵. در فیلد <strong>Port</strong>: پورت SSH رو بنویس<br>
-    ۶. در فیلد <strong>Username</strong>: <code>root</code> بنویس<br>
-    ۷. در فیلد <strong>Password</strong>: رمز سرورت رو بنویس<br>
-    ۸. <strong>Save</strong> کن، سپس روی هاست تَپ کن
+    <strong>راهنمای اتصال:</strong><br>
+    ۱. Termius باز کن → دکمه <strong>+</strong> → <strong>New Host</strong><br>
+    ۲. <strong>Hostname</strong>: IP سرورت &nbsp;|&nbsp; <strong>Port</strong>: پورت SSH<br>
+    ۳. <strong>Username</strong>: <code>root</code> &nbsp;|&nbsp; <strong>Password</strong>: رمز VPS<br>
+    ۴. <strong>Save</strong> کن و روی هاست تَپ کن
   </div>
-
-  <div class="note info">
-    اگه پیام <strong>Are you sure you want to continue connecting?</strong> اومد، <strong>Yes</strong> بزن — این یه هشدار امنیتی نرماله.
-  </div>
-
-  <button class="done-btn" onclick="markDone(1)">✓ وصل شدم به سرور</button>
+  <div class="note info">اگه پیام <strong>continue connecting?</strong> اومد، <strong>Yes</strong> بزن — نرماله.</div>
+  <button class="done-btn" onclick="markDone(1,'fresh')">✓ وصل شدم</button>
 </div>
 
-<!-- ═══ STEP 2: UPDATE ═══ -->
-<div class="card" data-step="2">
+<!-- STEP 2 -->
+<div class="card" data-step="2" data-mode="fresh">
   <div class="card-head">
     <div class="card-num"><span>۲</span></div>
-    <div class="card-title">
-      به‌روزرسانی سرور
-      <span class="card-subtitle">حدود ۲ تا ۵ دقیقه طول می‌کشه</span>
-    </div>
+    <div class="card-title">به‌روزرسانی سرور <span class="card-subtitle">۲ تا ۵ دقیقه طول می‌کشه</span></div>
   </div>
-  <p class="card-desc">این دستور رو در ترمینال Termius پیست کن. منتظر بمون تا کامل بشه.</p>
-
+  <p class="card-desc">این دستور رو در ترمینال Termius پیست کن.</p>
   <div class="out">
-    <div class="out-label">دستور به‌روزرسانی + نصب ابزارها</div>
+    <div class="out-label">به‌روزرسانی + نصب ابزارها</div>
     <code id="cmd-update">apt update -y && apt upgrade -y && apt install -y curl wget socat sqlite3 ca-certificates ufw</code>
     <button class="copy-btn" data-target="cmd-update">📋 کپی دستور</button>
   </div>
-
   <div class="note">
-    <strong>اگه سؤال پرسید:</strong><br>
-    • <code>[Y/n]</code> نوشت؟ → حرف <code>Y</code> بزن و Enter<br>
-    • صفحه آبی یا بنفش باز شد؟ → فقط Enter بزن (یا کلیدهای جهت‌نما رو بزن تا OK بیاد)<br>
-    • هیچ کاری نکرد و فقط نوشت Done → نرمالیه، بریم مرحله بعد
+    <strong>اگه سؤال پرسید:</strong> <code>[Y/n]</code> → <code>Y</code> بزن و Enter &nbsp;|&nbsp; صفحه آبی باز شد → فقط Enter بزن
   </div>
-
-  <button class="done-btn" onclick="markDone(2)">✓ تموم شد</button>
+  <button class="done-btn" onclick="markDone(2,'fresh')">✓ تموم شد</button>
 </div>
 
-<!-- ═══ STEP 3: 3X-UI ═══ -->
-<div class="card" data-step="3">
+<!-- STEP 3 -->
+<div class="card" data-step="3" data-mode="fresh">
   <div class="card-head">
     <div class="card-num"><span>۳</span></div>
-    <div class="card-title">
-      نصب پنل 3x-ui
-      <span class="card-subtitle">پنل مدیریت پروکسی — رایگان و متن‌باز</span>
-    </div>
+    <div class="card-title">نصب پنل 3x-ui <span class="card-subtitle">پنل مدیریت پروکسی — رایگان و متن‌باز</span></div>
   </div>
-  <p class="card-desc">این دستور رو در ترمینال پیست کن. نصب خودکاره و فقط چند تا سؤال می‌پرسه.</p>
-
   <div class="out">
     <div class="out-label">دستور نصب 3x-ui</div>
     <code>bash &lt;(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)</code>
     <button class="copy-btn" data-text="bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)">📋 کپی دستور</button>
   </div>
-
-  <div class="note">
-    <strong>⚙️ پاسخ به سؤالات نصب — دقیقاً همینا رو وارد کن:</strong>
-  </div>
-
+  <div class="note"><strong>⚙️ پاسخ به سؤالات نصب — دقیقاً همینا:</strong></div>
   <div class="qa-list">
-    <div class="qa-item">
-      <div class="qa-q">Customize Panel Port?</div>
-      <div>
-        <div class="qa-a">y</div>
-        <div class="qa-note">بله — می‌خوایم پورت رو خودمون انتخاب کنیم</div>
-      </div>
-    </div>
-    <div class="qa-item">
-      <div class="qa-q">Panel port</div>
-      <div>
-        <div class="qa-a">27925</div>
-        <div class="qa-note">یه عدد بین ۱۰۰۰۰ تا ۶۰۰۰۰ — یادداشت کن!</div>
-      </div>
-    </div>
-    <div class="qa-item">
-      <div class="qa-q">Username</div>
-      <div>
-        <div class="qa-a">kianadmin</div>
-        <div class="qa-note">هر نام دلخواهی — یادداشت کن!</div>
-      </div>
-    </div>
-    <div class="qa-item">
-      <div class="qa-q">Password</div>
-      <div>
-        <div class="qa-a warn">یه رمز قوی بساز</div>
-        <div class="qa-note">مثلاً: Kian@2024Vps — حتماً یادداشت کن!</div>
-      </div>
-    </div>
-    <div class="qa-item">
-      <div class="qa-q">SSL setup</div>
-      <div>
-        <div class="qa-a">2</div>
-        <div class="qa-note">گزینه ۲ = Let's Encrypt for IP — نه گزینه ۱!</div>
-      </div>
-    </div>
-    <div class="qa-item">
-      <div class="qa-q">IPv6 address?</div>
-      <div>
-        <div class="qa-a">Enter</div>
-        <div class="qa-note">فقط Enter بزن — خالی رها کن</div>
-      </div>
-    </div>
-    <div class="qa-item">
-      <div class="qa-q">Port for ACME</div>
-      <div>
-        <div class="qa-a">80</div>
-        <div class="qa-note">حتماً ۸۰ بزن، نه ۸۰۸۰!</div>
-      </div>
-    </div>
+    <div class="qa-item"><div class="qa-q">Customize Panel Port?</div><div><div class="qa-a">y</div><div class="qa-note">می‌خوایم پورت رو خودمون انتخاب کنیم</div></div></div>
+    <div class="qa-item"><div class="qa-q">Panel port</div><div><div class="qa-a">27925</div><div class="qa-note">یه عدد بین ۱۰۰۰۰ تا ۶۰۰۰۰ — یادداشت کن!</div></div></div>
+    <div class="qa-item"><div class="qa-q">Username</div><div><div class="qa-a">kianadmin</div><div class="qa-note">هر نام دلخواه — یادداشت کن!</div></div></div>
+    <div class="qa-item"><div class="qa-q">Password</div><div><div class="qa-a warn">یه رمز قوی بساز</div><div class="qa-note">مثلاً Kian@2024Vps — حتماً یادداشت کن!</div></div></div>
+    <div class="qa-item"><div class="qa-q">SSL setup</div><div><div class="qa-a">2</div><div class="qa-note">گزینه ۲ = Let's Encrypt for IP — نه ۱!</div></div></div>
+    <div class="qa-item"><div class="qa-q">IPv6 address?</div><div><div class="qa-a">Enter</div><div class="qa-note">خالی رها کن</div></div></div>
+    <div class="qa-item"><div class="qa-q">Port for ACME</div><div><div class="qa-a">80</div><div class="qa-note">حتماً ۸۰ بزن، نه ۸۰۸۰!</div></div></div>
   </div>
-
-  <div class="note info">
-    <strong>اگه SSL با خطا رفت — نگران نباش!</strong><br>
-    پنل حتی بدون SSL گواهی‌دار هم کار می‌کنه. کانفیگ نهایی به TLS پنل وابسته نیست — Netlify این کار رو می‌کنه.
-  </div>
-
-  <div class="note danger">
-    <strong>مهم:</strong> پس از نصب، آدرس پنل، یوزرنیم و رمز در ترمینال نمایش داده می‌شن. اون‌ها رو در یه جای امن یادداشت کن — بدون اینا نمی‌تونی به پنل وارد بشی.
-  </div>
-
-  <button class="done-btn" onclick="markDone(3)">✓ پنل نصب شد</button>
+  <div class="note info"><strong>SSL با خطا رفت؟</strong> نگران نباش — TLS از طریق Netlify فراهم می‌شه، نه پنل.</div>
+  <div class="note danger"><strong>مهم:</strong> آدرس پنل + یوزرنیم + رمز رو در جای امنی یادداشت کن.</div>
+  <button class="done-btn" onclick="markDone(3,'fresh')">✓ پنل نصب شد</button>
 </div>
 
-<!-- ═══ STEP 4: INBOUND ═══ -->
-<div class="card" data-step="4">
+<!-- STEP 4 -->
+<div class="card" data-step="4" data-mode="fresh">
   <div class="card-head">
     <div class="card-num"><span>۴</span></div>
-    <div class="card-title">
-      ساخت خودکار اتصال
-      <span class="card-subtitle">UUID و PATH تصادفی ساخته می‌شن</span>
-    </div>
+    <div class="card-title">ساخت خودکار inbound <span class="card-subtitle">UUID و PATH تصادفی ساخته می‌شن</span></div>
   </div>
-  <p class="card-desc">این اسکریپت خودکار یه اتصال VLESS+XHTTP روی پورت ۸۴۴۳ می‌سازه، پورت رو باز می‌کنه و مقادیر رو نمایش می‌ده.</p>
-
+  <p class="card-desc">این اسکریپت یه اتصال VLESS+XHTTP روی پورت ۸۴۴۳ می‌سازه و مقادیر رو نمایش می‌ده.</p>
   <div class="out">
-    <div class="out-label">اسکریپت ساخت inbound — همه رو یکجا کپی و پیست کن</div>
+    <div class="out-label">اسکریپت ساخت inbound — همه رو یکجا کپی‌پیست کن</div>
     <code id="cmd-inbound">در حال آماده‌سازی...</code>
     <button class="copy-btn" data-target="cmd-inbound">📋 کپی اسکریپت</button>
   </div>
-
   <div class="note success">
-    <strong>بعد از اجرا، ترمینال چیزی شبیه این نشون می‌ده:</strong><br>
+    <strong>خروجی موفق در ترمینال:</strong><br>
     <code>================================</code><br>
     <code>&nbsp;&nbsp;inbound created successfully</code><br>
-    <code>================================</code><br>
     <code>&nbsp;&nbsp;UUID: d1e825b6-9d29-...</code><br>
     <code>&nbsp;&nbsp;PATH: relay-vmt3u6</code><br>
     <code>================================</code>
   </div>
-
   <hr class="divider">
-  <div class="section-label">مقادیر رو از ترمینال اینجا وارد کن</div>
-
+  <div class="section-label">مقادیر UUID و PATH رو از ترمینال اینجا وارد کن</div>
   <div class="field">
     <label>🔑 UUID (از ترمینال)</label>
     <input type="text" id="i-uuid" placeholder="مثلاً: d1e825b6-9d29-4d1d-a270-d260453409bd" oninput="rebuild()" />
-    <div class="hint">کل عدد ۳۶ کاراکتری روبروی UUID: رو کپی کن.</div>
   </div>
-
   <div class="field">
     <label>🛤️ PATH (از ترمینال)</label>
     <input type="text" id="i-path" placeholder="مثلاً: relay-vmt3u6" oninput="rebuild()" />
-    <div class="hint">فقط همون چیزی که روبروی PATH: نوشته — بدون / اول یا آخر.</div>
+    <div class="hint">بدون / اول یا آخر — فقط همون چیزی که روبروی PATH: نوشته.</div>
   </div>
-
-  <button class="done-btn" onclick="markDone(4)">✓ UUID و Path رو وارد کردم</button>
+  <button class="done-btn" onclick="markDone(4,'fresh')">✓ UUID و PATH رو وارد کردم</button>
 </div>
 
-<!-- ═══ STEP 5: DOWNLOAD ZIP ═══ -->
-<div class="card" data-step="5">
+<!-- STEP 5 -->
+<div class="card" data-step="5" data-mode="fresh">
   <div class="card-head">
     <div class="card-num"><span>۵</span></div>
-    <div class="card-title">
-      دانلود فایل پروژه Netlify
-      <span class="card-subtitle">IP سرورت خودکار داخل فایل جاسازی می‌شه</span>
-    </div>
+    <div class="card-title">دانلود فایل پروژه Netlify <span class="card-subtitle">IP سرور خودکار داخل فایل جاسازی می‌شه</span></div>
   </div>
-
-  <div id="step5-locked" class="lock-msg">ابتدا IP سرور رو در مرحله ۰ وارد کن</div>
-
-  <div id="step5-content" style="display:none;">
-    <p class="card-desc">با کلیک روی این دکمه، یه فایل ZIP ساخته می‌شه که آدرس سرور تو <strong>از قبل داخلش تنظیم شده</strong>. هیچ تنظیم اضافه‌ای در Netlify لازم نیست.</p>
-
-    <div class="note info">
-      آدرس سرور جاسازی‌شده: <code id="show-target">https://...:8443</code>
-    </div>
-
-    <button class="action-btn download" id="btn-download" onclick="downloadProject()">
-      <span class="icon">📦</span> ساخت و دانلود فایل netlify-relay.zip
-    </button>
-
-    <div id="download-status" style="display:none; text-align:center; padding:10px; font-size:13px; color:var(--text-2);"></div>
-
-    <div class="note">
-      <strong>فایل دانلود نشد؟</strong> مطمئن شو که:<br>
-      • IP سرور رو در مرحله ۰ وارد کردی<br>
-      • مرورگرت دانلود رو مسدود نکرده (بالای مرورگر نگاه کن)
-    </div>
-
-    <button class="done-btn" onclick="markDone(5)">✓ فایل ZIP دانلود شد</button>
+  <div id="step5-locked" class="lock-msg">ابتدا IP سرور را در مرحله ۰ وارد کن</div>
+  <div id="step5-content" style="display:none">
+    <div class="note info">آدرس جاسازی‌شده: <code id="show-target">https://...:8443</code></div>
+    <button class="action-btn" onclick="downloadProject()"><span class="icon">📦</span> ساخت و دانلود netlify-relay.zip</button>
+    <div id="download-status" style="display:none;text-align:center;padding:10px;font-size:13px;color:var(--text-2)"></div>
+    <button class="done-btn" onclick="markDone(5,'fresh')">✓ دانلود کردم</button>
   </div>
 </div>
 
-<!-- ═══ STEP 6: NETLIFY UPLOAD ═══ -->
-<div class="card" data-step="6">
+<!-- STEP 6 -->
+<div class="card" data-step="6" data-mode="fresh">
   <div class="card-head">
     <div class="card-num"><span>۶</span></div>
-    <div class="card-title">
-      آپلود در Netlify
-      <span class="card-subtitle">ثبت‌نام رایگان — هیچ تنظیمی لازم نیست</span>
-    </div>
+    <div class="card-title">آپلود در Netlify <span class="card-subtitle">ثبت‌نام رایگان — هیچ تنظیمی لازم نیست</span></div>
   </div>
-  <p class="card-desc">فایل ZIP که دانلود کردی رو به Netlify آپلود کن.</p>
-
-  <a class="action-btn" href="https://app.netlify.com/drop" target="_blank">
-    <span class="icon">🌐</span> باز کردن Netlify Drop
-  </a>
-
+  <a class="action-btn" href="https://app.netlify.com/drop" target="_blank"><span class="icon">🌐</span> باز کردن Netlify Drop</a>
   <div class="step-info">
-    <strong>راهنمای آپلود (قدم به قدم):</strong><br>
+    <strong>راهنمای آپلود:</strong><br>
     ۱. لینک بالا رو باز کن (اگه اکانت نداری، ثبت‌نام رایگان کن)<br>
-    ۲. صفحه‌ای با نوشته <strong>Drag and drop</strong> می‌بینی<br>
-    ۳. روی <strong>browse files to upload</strong> بزن<br>
-    ۴. فایل <code>netlify-relay.zip</code> رو انتخاب کن<br>
-    ۵. صبر کن تا وضعیت به <strong style="color:var(--accent)">Published ✓</strong> تغییر کنه
+    ۲. <strong>browse files to upload</strong> → فایل <code>netlify-relay.zip</code> رو انتخاب کن<br>
+    ۳. صبر کن تا وضعیت به <strong style="color:var(--accent)">Published ✓</strong> تغییر کنه<br>
+    ۴. آدرس <code>xxxx.netlify.app</code> رو کپی کن
+  </div>
+  <div class="note">
+    <strong>خطا داد؟</strong><br>
+    • <code>Edge Functions not supported</code> → باید Free plan داشته باشی<br>
+    • <code>Build failed</code> → فایل ZIP رو دوباره از مرحله ۵ دانلود و آپلود کن
+  </div>
+  <button class="done-btn" onclick="markDone(6,'fresh')">✓ Deploy موفق بود</button>
+</div>
+
+<!-- STEP 7 -->
+<div class="card" data-step="7" data-mode="fresh">
+  <div class="card-head">
+    <div class="card-num"><span>۷</span></div>
+    <div class="card-title">کانفیگ نهایی VLESS <span class="card-subtitle">آماده ایمپورت در v2rayNG</span></div>
+  </div>
+  <div id="step7-locked" class="lock-msg">ابتدا مراحل ۰ و ۴ را پر کن</div>
+  <div id="step7-content" style="display:none">
+    <div class="field">
+      <label>🌐 دامنه Netlify (بدون https://)</label>
+      <input type="text" id="i-netlify" placeholder="amazing-site-abc123.netlify.app" oninput="rebuild()" />
+    </div>
+    <div id="config-box" style="display:none">
+      <div class="out">
+        <div class="out-label">کانفیگ VLESS نهایی</div>
+        <code id="cmd-config" style="font-size:11.5px;color:#a5f3d4">…</code>
+        <button class="copy-btn" data-target="cmd-config">📋 کپی کانفیگ VLESS</button>
+      </div>
+      <a class="action-btn secondary" href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank"><span class="icon">📱</span> دانلود v2rayNG</a>
+      <div class="step-info">
+        <strong>ایمپورت در v2rayNG:</strong><br>
+        دکمه <strong>+</strong> → <strong>Import config from Clipboard</strong> → روی کانفیگ تَپ کن → دکمه ▶ پایین رو بزن
+      </div>
+      <div class="note info"><strong>تست:</strong> بعد از فعال کردن، google.com رو باز کن. باز شد؟ 🎉 همه چیز درسته!</div>
+    </div>
+    <button class="done-btn" onclick="markDone(7,'fresh')">✓ اتصال برقرار شد</button>
+  </div>
+</div>
+
+</div><!-- /mode-fresh -->
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--     حالت ۲: پنل 3x-ui دارم (مراحل A تا D)   -->
+<!-- ════════════════════════════════════════════ -->
+<div id="mode-existing" style="display:none">
+
+<!-- STEP A: مشخصات VPS -->
+<div class="card" data-step="A" data-mode="existing">
+  <div class="card-head">
+    <div class="card-num"><span>A</span></div>
+    <div class="card-title">مشخصات سرور <span class="card-subtitle">IP سرورت رو وارد کن</span></div>
+  </div>
+  <p class="card-desc">فقط IP سرورت لازمه — بقیه اطلاعات رو از پنل می‌گیریم.</p>
+  <div class="field">
+    <label>📡 آدرس IP سرور</label>
+    <input type="text" id="e-ip" placeholder="مثلاً: 92.119.56.9" oninput="rebuildExisting()" />
+  </div>
+  <button class="done-btn" onclick="markDone('A','existing')">✓ وارد کردم</button>
+</div>
+
+<!-- STEP B: گرفتن UUID و PATH از پنل -->
+<div class="card" data-step="B" data-mode="existing">
+  <div class="card-head">
+    <div class="card-num"><span>B</span></div>
+    <div class="card-title">گرفتن UUID و PATH از پنل <span class="card-subtitle">یه inbound VLESS+XHTTP لازم داری</span></div>
   </div>
 
   <div class="note info">
-    بعد از deploy موفق، یه آدرس مثل <code>amazing-site-abc123.netlify.app</code> در بالای داشبورد نشون داده می‌شه. این آدرس رو کپی کن — در مرحله بعد لازمه.
+    <strong>inbound داری ولی XHTTP نیست؟</strong> یا می‌تونی inbound جدید بسازی (دستور زیر) یا از inbound قدیمی‌ات مقادیر رو بگیری.
   </div>
 
-  <div class="note">
-    <strong>آپلود رد شد یا خطا داد؟</strong><br>
-    • اگه <strong>Edge Functions not supported</strong> گفت: در Netlify باید Free plan داشته باشی<br>
-    • اگه <strong>Build failed</strong> گفت: فایل ZIP رو دوباره در مرحله ۵ دانلود و آپلود کن
-  </div>
-
-  <button class="done-btn" onclick="markDone(6)">✓ Deploy موفق بود</button>
-</div>
-
-<!-- ═══ STEP 7: FINAL CONFIG ═══ -->
-<div class="card" data-step="7">
-  <div class="card-head">
-    <div class="card-num"><span>۷</span></div>
-    <div class="card-title">
-      کانفیگ نهایی VLESS
-      <span class="card-subtitle">آماده ایمپورت در v2rayNG</span>
-    </div>
-  </div>
-
-  <div id="step7-locked" class="lock-msg">ابتدا مراحل ۰ و ۴ را پر کن</div>
-
-  <div id="step7-content" style="display:none;">
-    <p class="card-desc">آدرسی که Netlify داد رو اینجا وارد کن تا کانفیگ آماده بشه.</p>
-
-    <div class="field">
-      <label>🌐 دامنه Netlify تو</label>
-      <input type="text" id="i-netlify" placeholder="amazing-site-abc123.netlify.app" oninput="rebuild()" />
-      <div class="hint">فقط آدرس بدون https:// — مثلاً: <code>my-relay-abc.netlify.app</code></div>
-    </div>
-
-    <div id="config-box" style="display:none;">
+  <!-- گزینه ۱: ساخت inbound جدید -->
+  <details style="margin:10px 0;">
+    <summary style="cursor:pointer;color:var(--accent);font-size:13px;font-weight:600;padding:8px 0;">
+      🔧 گزینه ۱: ساخت inbound جدید VLESS+XHTTP (توصیه‌شده)
+    </summary>
+    <div style="margin-top:10px;">
+      <p style="font-size:13px;color:var(--text-2);margin-bottom:8px;">اگه می‌خوای یه inbound مخصوص Netlify بسازی، این اسکریپت رو در ترمینال سرورت اجرا کن:</p>
       <div class="out">
-        <div class="out-label">کانفیگ VLESS نهایی — آماده کپی و ایمپورت</div>
-        <code id="cmd-config" style="font-size:11.5px; color: #a5f3d4;">…</code>
-        <button class="copy-btn" data-target="cmd-config">📋 کپی کانفیگ VLESS</button>
+        <div class="out-label">اسکریپت ساخت inbound جدید</div>
+        <code id="cmd-inbound-ex">در حال آماده‌سازی...</code>
+        <button class="copy-btn" data-target="cmd-inbound-ex">📋 کپی اسکریپت</button>
       </div>
-
-      <a class="action-btn secondary" href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank">
-        <span class="icon">📱</span> دانلود v2rayNG از Play Store
-      </a>
-
-      <div class="step-info">
-        <strong>ایمپورت کانفیگ در v2rayNG:</strong><br>
-        ۱. کانفیگ بالا رو کپی کن<br>
-        ۲. v2rayNG رو باز کن<br>
-        ۳. دکمه <strong>+</strong> (بالا راست) → <strong>Import config from Clipboard</strong><br>
-        ۴. کانفیگ ایمپورت می‌شه — روش تَپ کن تا انتخاب بشه<br>
-        ۵. دکمه پلِی (▶) پایین صفحه رو بزن<br>
-        ۶. اگه اتصال برقرار شد، آیکون V2 در نوار بالا سبز می‌شه
-      </div>
-
-      <div class="note info">
-        <strong>تست اتصال:</strong> بعد از فعال کردن، یه سایت فیلترشده مثل google.com رو باز کن. اگه باز شد — 🎉 همه چیز درست کار می‌کنه!
+      <div class="note success">
+        بعد از اجرا، <code>UUID</code> و <code>PATH</code> چاپ می‌شن — اونا رو در فیلدهای زیر وارد کن.
       </div>
     </div>
+  </details>
 
-    <button class="done-btn" onclick="markDone(7)">✓ اتصال برقرار شد</button>
+  <!-- گزینه ۲: گرفتن از پنل موجود -->
+  <details style="margin:10px 0;">
+    <summary style="cursor:pointer;color:var(--info);font-size:13px;font-weight:600;padding:8px 0;">
+      🖥️ گزینه ۲: گرفتن UUID و PATH از inbound موجود در پنل
+    </summary>
+    <div style="margin-top:10px;">
+      <div class="get-values-guide">
+        <div class="gv-step">
+          <div class="gv-num">۱</div>
+          <div class="gv-text">به آدرس پنل برو: <code>https://IP-سرورت:پورت-پنل</code> — مثلاً <code>https://92.119.56.9:27925</code></div>
+        </div>
+        <div class="gv-step">
+          <div class="gv-num">۲</div>
+          <div class="gv-text">از منوی کناری روی <strong>Inbounds</strong> کلیک کن</div>
+        </div>
+        <div class="gv-step">
+          <div class="gv-num">۳</div>
+          <div class="gv-text">inbound VLESS خودت رو پیدا کن — باید Protocol: <code>VLESS</code> و Network: <code>xhttp</code> باشه</div>
+        </div>
+        <div class="gv-step">
+          <div class="gv-num">۴</div>
+          <div class="gv-text">روی دکمه <strong>✏️ (Edit)</strong> یا <strong>QR code</strong> کلیک کن</div>
+        </div>
+        <div class="gv-step">
+          <div class="gv-num">۵</div>
+          <div class="gv-text"><strong>UUID</strong> رو از Client ID و <strong>Path</strong> رو از بخش Network Settings کپی کن</div>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>پروتکل VLESS ولی Network: TCP یا WS داری؟</strong> اون inbound برای Netlify XHTTP کار نمی‌کنه. از گزینه ۱ یه inbound جدید بساز.
+      </div>
+
+      <!-- دستور گرفتن مقادیر از ترمینال -->
+      <p style="font-size:13px;color:var(--text-2);margin:10px 0 6px;">یا اگه دسترسی ترمینال داری، این دستور UUID و Path همه inbound ها رو نشون می‌ده:</p>
+      <div class="out">
+        <div class="out-label">خواندن inbounds از دیتابیس</div>
+        <code>sqlite3 /etc/x-ui/x-ui.db "SELECT id,remark,protocol,port,stream_settings FROM inbounds;" | grep -A2 "vless"</code>
+        <button class="copy-btn" data-text='sqlite3 /etc/x-ui/x-ui.db "SELECT id,remark,protocol,port,stream_settings FROM inbounds;"'>📋 کپی دستور</button>
+      </div>
+      <p style="font-size:12px;color:var(--text-3);margin-top:6px;">یا این دستور رو برای خواندن UUID از یه inbound خاص (id=1) بزن:</p>
+      <div class="out">
+        <div class="out-label">خواندن UUID از inbound</div>
+        <code id="cmd-read-uuid">sqlite3 /etc/x-ui/x-ui.db "SELECT settings,stream_settings FROM inbounds WHERE protocol='vless' LIMIT 1;" | python3 -c "import sys,json; lines=sys.stdin.read().split('|'); s=json.loads(lines[0]); st=json.loads(lines[1]); print('UUID:', s['clients'][0]['id']); print('PATH:', st.get('xhttpSettings',{}).get('path','N/A').strip('/'))"</code>
+        <button class="copy-btn" data-target="cmd-read-uuid">📋 کپی دستور</button>
+      </div>
+    </div>
+  </details>
+
+  <hr class="divider">
+  <div class="section-label">UUID و PATH رو اینجا وارد کن</div>
+
+  <div class="field">
+    <label>🔑 UUID</label>
+    <input type="text" id="e-uuid" placeholder="مثلاً: d1e825b6-9d29-4d1d-a270-d260453409bd" oninput="rebuildExisting()" />
+    <div class="hint">۳۶ کاراکتر با خط‌تیره — از پنل یا خروجی اسکریپت</div>
+  </div>
+  <div class="field">
+    <label>🛤️ PATH</label>
+    <input type="text" id="e-path" placeholder="مثلاً: relay-vmt3u6" oninput="rebuildExisting()" />
+    <div class="hint">بدون / اول یا آخر</div>
+  </div>
+
+  <!-- چک پورت -->
+  <hr class="divider">
+  <div class="section-label">باز بودن پورت ۸۴۴۳ رو چک کن</div>
+  <div class="note">
+    <strong>پورت inbound چنده؟</strong> اگه روی ۸۴۴۳ هست، دستور زیر پورت رو در فایروال باز می‌کنه. اگه پورت دیگه‌ایه، عدد رو عوض کن.
+  </div>
+  <div class="out">
+    <div class="out-label">باز کردن پورت در فایروال</div>
+    <code id="cmd-ufw-ex">ufw allow 8443/tcp && ufw status</code>
+    <button class="copy-btn" data-target="cmd-ufw-ex">📋 کپی دستور</button>
+  </div>
+  <div class="field">
+    <label>🔢 پورت inbound (اگه ۸۴۴۳ نیست)</label>
+    <input type="text" id="e-port" placeholder="8443" value="8443" oninput="rebuildExisting()" />
+  </div>
+
+  <button class="done-btn" onclick="markDone('B','existing')">✓ UUID و PATH وارد شد</button>
+</div>
+
+<!-- STEP C: دانلود ZIP -->
+<div class="card" data-step="C" data-mode="existing">
+  <div class="card-head">
+    <div class="card-num"><span>C</span></div>
+    <div class="card-title">دانلود فایل پروژه Netlify <span class="card-subtitle">IP سرور خودکار جاسازی می‌شه</span></div>
+  </div>
+  <div id="stepC-locked" class="lock-msg">ابتدا IP سرور را در مرحله A وارد کن</div>
+  <div id="stepC-content" style="display:none">
+    <div class="note info">آدرس جاسازی‌شده: <code id="show-target-ex">https://...:8443</code></div>
+    <button class="action-btn" onclick="downloadProjectEx()"><span class="icon">📦</span> ساخت و دانلود netlify-relay.zip</button>
+    <div id="download-status-ex" style="display:none;text-align:center;padding:10px;font-size:13px;color:var(--text-2)"></div>
+    <a class="action-btn secondary" href="https://app.netlify.com/drop" target="_blank"><span class="icon">🌐</span> باز کردن Netlify Drop برای آپلود</a>
+    <div class="step-info">
+      <strong>راهنمای آپلود:</strong><br>
+      ۱. ZIP رو دانلود کن<br>
+      ۲. در Netlify Drop فایل رو آپلود کن<br>
+      ۳. آدرس <code>xxxx.netlify.app</code> رو کپی کن
+    </div>
+    <button class="done-btn" onclick="markDone('C','existing')">✓ Deploy موفق بود</button>
   </div>
 </div>
+
+<!-- STEP D: کانفیگ نهایی -->
+<div class="card" data-step="D" data-mode="existing">
+  <div class="card-head">
+    <div class="card-num"><span>D</span></div>
+    <div class="card-title">کانفیگ نهایی VLESS <span class="card-subtitle">آماده ایمپورت در v2rayNG</span></div>
+  </div>
+  <div id="stepD-locked" class="lock-msg">ابتدا مراحل A و B را پر کن</div>
+  <div id="stepD-content" style="display:none">
+    <div class="field">
+      <label>🌐 دامنه Netlify (بدون https://)</label>
+      <input type="text" id="e-netlify" placeholder="amazing-site-abc123.netlify.app" oninput="rebuildExisting()" />
+    </div>
+    <div id="config-box-ex" style="display:none">
+      <div class="out">
+        <div class="out-label">کانفیگ VLESS نهایی</div>
+        <code id="cmd-config-ex" style="font-size:11.5px;color:#a5f3d4">…</code>
+        <button class="copy-btn" data-target="cmd-config-ex">📋 کپی کانفیگ VLESS</button>
+      </div>
+      <a class="action-btn secondary" href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank"><span class="icon">📱</span> دانلود v2rayNG</a>
+      <div class="step-info">
+        <strong>ایمپورت در v2rayNG:</strong><br>
+        دکمه <strong>+</strong> → <strong>Import config from Clipboard</strong> → روی کانفیگ تَپ کن → دکمه ▶ پایین
+      </div>
+      <div class="note info"><strong>تست:</strong> google.com رو باز کن. باز شد؟ 🎉</div>
+    </div>
+    <button class="done-btn" onclick="markDone('D','existing')">✓ اتصال برقرار شد</button>
+  </div>
+</div>
+
+</div><!-- /mode-existing -->
 
 <!-- ═══ FINALE ═══ -->
 <div class="finale" id="finale">
@@ -822,7 +624,7 @@ h1 {
   <h2>اینترنت آزاد!</h2>
   <p>VPS تو الان از پشت CDN جهانی Netlify کار می‌کنه. ترافیکت رمزگذاری‌شده‌ست و IP سرورت پنهانه.</p>
   <br>
-  <div class="status-row" style="justify-content:center;">
+  <div class="status-row" style="justify-content:center">
     <span class="status-badge ok">✅ تلگرام</span>
     <span class="status-badge ok">✅ مرورگر</span>
     <span class="status-badge ok">✅ YouTube</span>
@@ -834,69 +636,135 @@ h1 {
 </div><!-- /wrap -->
 
 <div class="float-progress">
-  پیشرفت: <strong id="progressFill2">۰</strong> از <strong>۸</strong> مرحله ✓
+  پیشرفت: <strong id="progressFill2">۰</strong> از <strong id="totalText2">۸</strong> ✓
 </div>
 
 <script>
 const $ = id => document.getElementById(id);
-const totalSteps = 8;
-const doneSteps = new Set();
+const toFa = n => n.toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
 
-function toFa(n) {
-  return n.toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+// ── MODE ──
+let currentMode = 'fresh';
+const freshSteps = [0,1,2,3,4,5,6,7];
+const existingSteps = ['A','B','C','D'];
+const doneFresh = new Set();
+const doneExisting = new Set();
+
+function setMode(mode) {
+  currentMode = mode;
+  $('mode-fresh').style.display = mode === 'fresh' ? 'block' : 'none';
+  $('mode-existing').style.display = mode === 'existing' ? 'block' : 'none';
+  $('btn-fresh').classList.toggle('active', mode === 'fresh');
+  $('btn-existing').classList.toggle('active', mode === 'existing');
+  const total = mode === 'fresh' ? 8 : 4;
+  $('totalText').textContent = toFa(total);
+  $('totalText2').textContent = toFa(total);
+  updateProgress();
+  rebuild();
+  rebuildExisting();
 }
 
-function markDone(n) {
-  doneSteps.add(n);
-  document.querySelector(`.card[data-step="${n}"]`).classList.add('done');
-  updateProgress();
-  if (doneSteps.size === totalSteps) {
-    $('finale').classList.add('unlocked');
-    setTimeout(() => $('finale').scrollIntoView({behavior:'smooth', block:'center'}), 300);
+function markDone(n, mode) {
+  if (mode === 'fresh') {
+    doneFresh.add(n);
+    document.querySelector(`.card[data-step="${n}"][data-mode="fresh"]`).classList.add('done');
+    if (doneFresh.size === 8) unlock();
+    else {
+      const steps = [0,1,2,3,4,5,6,7];
+      const idx = steps.indexOf(n);
+      if (idx < steps.length-1) {
+        const next = document.querySelector(`.card[data-step="${steps[idx+1]}"][data-mode="fresh"]`);
+        if (next) setTimeout(() => next.scrollIntoView({behavior:'smooth',block:'start'}), 250);
+      }
+    }
   } else {
-    const next = document.querySelector(`.card[data-step="${n+1}"]`);
-    if (next) setTimeout(() => next.scrollIntoView({behavior:'smooth', block:'start'}), 250);
+    doneExisting.add(n);
+    document.querySelector(`.card[data-step="${n}"][data-mode="existing"]`).classList.add('done');
+    if (doneExisting.size === 4) unlock();
+    else {
+      const steps = ['A','B','C','D'];
+      const idx = steps.indexOf(n);
+      if (idx < steps.length-1) {
+        const next = document.querySelector(`.card[data-step="${steps[idx+1]}"][data-mode="existing"]`);
+        if (next) setTimeout(() => next.scrollIntoView({behavior:'smooth',block:'start'}), 250);
+      }
+    }
   }
+  updateProgress();
+}
+
+function unlock() {
+  $('finale').classList.add('unlocked');
+  setTimeout(() => $('finale').scrollIntoView({behavior:'smooth',block:'center'}), 300);
 }
 
 function updateProgress() {
-  const pct = (doneSteps.size / totalSteps) * 100;
-  $('progressFill').style.width = pct + '%';
-  const fa = toFa(doneSteps.size);
+  const done = currentMode === 'fresh' ? doneFresh.size : doneExisting.size;
+  const total = currentMode === 'fresh' ? 8 : 4;
+  $('progressFill').style.width = (done/total*100) + '%';
+  const fa = toFa(done);
   $('progressText').textContent = fa;
   $('progressFill2').textContent = fa;
 }
 
+// ── FRESH MODE REBUILD ──
 function rebuild() {
   const ip = $('i-ip').value.trim();
   const uuid = $('i-uuid').value.trim();
   const path = $('i-path').value.trim();
   const netlify = $('i-netlify').value.trim();
 
-  // Step 4 inbound script
   $('cmd-inbound').textContent = buildInboundScript();
 
-  // Step 5
-  const step5Ready = !!ip;
-  $('step5-locked').style.display = step5Ready ? 'none' : 'block';
-  $('step5-content').style.display = step5Ready ? 'block' : 'none';
-  if (step5Ready) {
-    $('show-target').textContent = `https://${ip}:8443`;
-  }
+  const s5ready = !!ip;
+  $('step5-locked').style.display = s5ready ? 'none' : 'block';
+  $('step5-content').style.display = s5ready ? 'block' : 'none';
+  if (s5ready) $('show-target').textContent = `https://${ip}:8443`;
 
-  // Step 7
-  const step7Ready = ip && uuid && path;
-  $('step7-locked').style.display = step7Ready ? 'none' : 'block';
-  $('step7-content').style.display = step7Ready ? 'block' : 'none';
+  const s7ready = ip && uuid && path;
+  $('step7-locked').style.display = s7ready ? 'none' : 'block';
+  $('step7-content').style.display = s7ready ? 'block' : 'none';
 
-  if (step7Ready && netlify) {
-    const cleanNetlify = netlify.replace(/^https?:\/\//, '').replace(/\/$/, '');
-    const config = `vless://${uuid}@kubernetes.io:443?mode=auto&path=%2F${encodeURIComponent(path)}&security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&insecure=0&host=${cleanNetlify}&fp=chrome&type=xhttp&allowInsecure=0&sni=kubernetes.io#Netlify-Relay`;
-    $('cmd-config').textContent = config;
+  if (s7ready && netlify) {
+    const clean = netlify.replace(/^https?:\/\//,'').replace(/\/$/,'');
+    $('cmd-config').textContent = buildConfig(uuid, path, clean);
     $('config-box').style.display = 'block';
   } else {
     $('config-box').style.display = 'none';
   }
+}
+
+// ── EXISTING MODE REBUILD ──
+function rebuildExisting() {
+  const ip = $('e-ip').value.trim();
+  const uuid = $('e-uuid').value.trim();
+  const path = $('e-path').value.trim();
+  const port = $('e-port').value.trim() || '8443';
+  const netlify = $('e-netlify').value.trim();
+
+  $('cmd-inbound-ex').textContent = buildInboundScript();
+  $('cmd-ufw-ex').textContent = `ufw allow ${port}/tcp && ufw status`;
+
+  const sCready = !!ip;
+  $('stepC-locked').style.display = sCready ? 'none' : 'block';
+  $('stepC-content').style.display = sCready ? 'block' : 'none';
+  if (sCready) $('show-target-ex').textContent = `https://${ip}:${port}`;
+
+  const sDready = ip && uuid && path;
+  $('stepD-locked').style.display = sDready ? 'none' : 'block';
+  $('stepD-content').style.display = sDready ? 'block' : 'none';
+
+  if (sDready && netlify) {
+    const clean = netlify.replace(/^https?:\/\//,'').replace(/\/$/,'');
+    $('cmd-config-ex').textContent = buildConfig(uuid, path, clean);
+    $('config-box-ex').style.display = 'block';
+  } else {
+    $('config-box-ex').style.display = 'none';
+  }
+}
+
+function buildConfig(uuid, path, netlifyDomain) {
+  return `vless://${uuid}@kubernetes.io:443?mode=auto&path=%2F${encodeURIComponent(path)}&security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&insecure=0&host=${netlifyDomain}&fp=chrome&type=xhttp&allowInsecure=0&sni=kubernetes.io#Netlify-Relay`;
 }
 
 function buildInboundScript() {
@@ -938,136 +806,88 @@ echo "================================"
 
 function genRelayJs(target) {
   return `const TARGET_BASE = "${target}".replace(/\\/$/, "");
-
-const STRIP_HEADERS = new Set([
-  "host", "connection", "keep-alive",
-  "proxy-authenticate", "proxy-authorization",
-  "te", "trailer", "transfer-encoding", "upgrade",
-  "forwarded", "x-forwarded-host",
-  "x-forwarded-proto", "x-forwarded-port",
-]);
-
+const STRIP_HEADERS = new Set(["host","connection","keep-alive","proxy-authenticate","proxy-authorization","te","trailer","transfer-encoding","upgrade","forwarded","x-forwarded-host","x-forwarded-proto","x-forwarded-port"]);
 export default async function handler(request) {
-  if (!TARGET_BASE) {
-    return new Response("Misconfigured: TARGET_DOMAIN is not set", { status: 500 });
-  }
+  if (!TARGET_BASE) return new Response("Misconfigured", {status:500});
   try {
     const url = new URL(request.url);
     const targetUrl = TARGET_BASE + url.pathname + url.search;
     const headers = new Headers();
     let clientIp = null;
-    for (const [key, value] of request.headers) {
+    for (const [key,value] of request.headers) {
       const k = key.toLowerCase();
       if (STRIP_HEADERS.has(k)) continue;
-      if (k.startsWith("x-nf-")) continue;
-      if (k.startsWith("x-netlify-")) continue;
-      if (k === "x-real-ip") { clientIp = value; continue; }
-      if (k === "x-forwarded-for") { if (!clientIp) clientIp = value; continue; }
-      headers.set(k, value);
+      if (k.startsWith("x-nf-")||k.startsWith("x-netlify-")) continue;
+      if (k==="x-real-ip"){clientIp=value;continue;}
+      if (k==="x-forwarded-for"){if(!clientIp)clientIp=value;continue;}
+      headers.set(k,value);
     }
-    if (clientIp) headers.set("x-forwarded-for", clientIp);
-    const method = request.method;
-    const hasBody = method !== "GET" && method !== "HEAD";
-    const fetchOptions = { method, headers, redirect: "manual" };
-    if (hasBody) fetchOptions.body = request.body;
-    const upstream = await fetch(targetUrl, fetchOptions);
-    const responseHeaders = new Headers();
-    for (const [key, value] of upstream.headers) {
-      if (key.toLowerCase() === "transfer-encoding") continue;
-      responseHeaders.set(key, value);
-    }
-    return new Response(upstream.body, {
-      status: upstream.status,
-      headers: responseHeaders,
-    });
-  } catch (error) {
-    return new Response("Bad Gateway: Relay Failed", { status: 502 });
-  }
-}
-`;
+    if (clientIp) headers.set("x-forwarded-for",clientIp);
+    const method=request.method;
+    const hasBody=method!=="GET"&&method!=="HEAD";
+    const opts={method,headers,redirect:"manual"};
+    if(hasBody)opts.body=request.body;
+    const upstream=await fetch(targetUrl,opts);
+    const rh=new Headers();
+    for(const [k,v] of upstream.headers){if(k.toLowerCase()==="transfer-encoding")continue;rh.set(k,v);}
+    return new Response(upstream.body,{status:upstream.status,headers:rh});
+  } catch(e){return new Response("Bad Gateway",{status:502});}
+}`;
 }
 
-const NETLIFY_TOML = `[build]
-  command = "npm run build"
-  publish = "public"
+const NETLIFY_TOML=`[build]\n  command = "npm run build"\n  publish = "public"\n\n[[edge_functions]]\n  function = "relay"\n  path = "/*"\n`;
+const PACKAGE_JSON=`{\n  "name": "netlify-xhttp-relay",\n  "version": "1.0.0",\n  "private": true,\n  "license": "MIT",\n  "scripts": {"build": "echo 'ok'"}\n}\n`;
+const INDEX_HTML=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Relay</title></head><body><p>Relay active.</p></body></html>`;
 
-[[edge_functions]]
-  function = "relay"
-  path = "/*"
-`;
-
-const PACKAGE_JSON = `{
-  "name": "netlify-xhttp-relay",
-  "version": "1.0.0",
-  "description": "Netlify Edge Function HTTP relay",
-  "private": true,
-  "license": "MIT",
-  "scripts": {
-    "build": "echo 'No build step required'"
-  }
+async function buildZip(target) {
+  const zip = new JSZip();
+  zip.file('netlify.toml', NETLIFY_TOML);
+  zip.file('package.json', PACKAGE_JSON);
+  zip.folder('public').file('index.html', INDEX_HTML);
+  zip.folder('netlify').folder('edge-functions').file('relay.js', genRelayJs(target));
+  return zip.generateAsync({type:'blob'});
 }
-`;
-
-const INDEX_HTML = `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>Relay Active</title></head>
-<body><p>Relay is active.</p></body></html>
-`;
 
 async function downloadProject() {
   const ip = $('i-ip').value.trim();
-  if (!ip) { alert('ابتدا IP سرور رو در مرحله ۰ وارد کن'); return; }
-
-  const target = `https://${ip}:8443`;
-  const status = $('download-status');
-  status.style.display = 'block';
-  status.textContent = '⏳ در حال آماده‌سازی فایل...';
-  status.style.color = 'var(--text-2)';
-
+  if (!ip) { alert('IP سرور رو در مرحله ۰ وارد کن'); return; }
+  const st = $('download-status');
+  st.style.display='block'; st.textContent='⏳ در حال ساخت...'; st.style.color='var(--text-2)';
   try {
-    const zip = new JSZip();
-    const folder = zip.folder('netlify-relay');
-    folder.file('netlify.toml', NETLIFY_TOML);
-    folder.file('package.json', PACKAGE_JSON);
-    folder.folder('public').file('index.html', INDEX_HTML);
-    folder.folder('netlify').folder('edge-functions').file('relay.js', genRelayJs(target));
+    const blob = await buildZip(`https://${ip}:8443`);
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='netlify-relay.zip';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    st.textContent='✅ دانلود شد — netlify-relay.zip آماده است'; st.style.color='var(--accent)';
+  } catch(e){ st.textContent='❌ خطا: '+e.message; st.style.color='var(--danger)'; }
+}
 
-    const blob = await zip.generateAsync({ type: 'blob' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'netlify-relay.zip';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
-    status.textContent = '✅ فایل دانلود شد — netlify-relay.zip آماده است';
-    status.style.color = 'var(--accent)';
-  } catch (err) {
-    status.textContent = '❌ خطا در ساخت فایل: ' + err.message;
-    status.style.color = 'var(--danger)';
-  }
+async function downloadProjectEx() {
+  const ip = $('e-ip').value.trim();
+  const port = $('e-port').value.trim() || '8443';
+  if (!ip) { alert('IP سرور رو در مرحله A وارد کن'); return; }
+  const st = $('download-status-ex');
+  st.style.display='block'; st.textContent='⏳ در حال ساخت...'; st.style.color='var(--text-2)';
+  try {
+    const blob = await buildZip(`https://${ip}:${port}`);
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='netlify-relay.zip';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    st.textContent='✅ دانلود شد — netlify-relay.zip آماده است'; st.style.color='var(--accent)';
+  } catch(e){ st.textContent='❌ خطا: '+e.message; st.style.color='var(--danger)'; }
 }
 
 // Copy buttons
-document.addEventListener('click', async (e) => {
+document.addEventListener('click', async e => {
   const btn = e.target.closest('.copy-btn');
   if (!btn) return;
   const text = btn.dataset.text || $(btn.dataset.target).textContent;
   try { await navigator.clipboard.writeText(text); }
-  catch {
-    const ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta);
-    ta.select(); document.execCommand('copy');
-    document.body.removeChild(ta);
-  }
-  const orig = btn.textContent;
-  btn.textContent = '✓ کپی شد!';
-  btn.classList.add('copied');
-  setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1500);
+  catch { const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }
+  const orig=btn.textContent; btn.textContent='✓ کپی شد!'; btn.classList.add('copied');
+  setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied');},1500);
 });
 
 rebuild();
+rebuildExisting();
 updateProgress();
 </script>
 </body>
