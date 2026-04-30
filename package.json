@@ -2,8 +2,5 @@
   "name": "netlify-xhttp-relay",
   "version": "1.0.0",
   "private": true,
-  "license": "MIT",
-  "scripts": {
-    "build": "echo 'No build step required'"
-  }
+  "scripts": { "build": "echo ok" }
 }
